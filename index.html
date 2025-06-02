@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لوحة التحكم</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+    <div class="menu">
+        <ul>
+            <li class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </li>
+            <li class="profile">
+                <div class="img-box">
+                    <img src="Screenshot 2025-05-30 234137.jpg" alt="صورة الملف الشخصي" />
+                </div>
+                <h2></h2>
+            </li>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                    <p>الرئيسية</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-user-group"></i>
+                    <p>العملاء</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-table"></i>
+                    <p>المنتجات</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-chart-pie"></i>
+                    <p>الرسوم البيانية</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-pen"></i>
+                    <p>المشاركات</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-star"></i>
+                    <p>المفضلة</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-cog"></i>
+                    <p>الإعدادات</p>
+                </a>
+            </li>
+            <li>
+                <a href="login.html" class="log-out">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <p>تسجيل الدخول</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="contect">
+        <h2 class="manager">مدير المنتجات</h2>
+        <div class="title-info">
+            <p>المنتجات</p>
+            <p>(عدد المنتجات:)</p>
+            <i class="fas fa-table"></i>
+        </div>
+        <div class="product-inputs">
+            <input type="text" id="productName" placeholder="اسم المنتج" autocomplete="off" />
+            <input type="number" id="productPrice" placeholder="السعر" min="0" step="0.01" autocomplete="off" />
+            <input type="number" id="productCount" placeholder="الكمية" min="1" step="1" autocomplete="off" />
+            <button class="add-btn" onclick="addOrUpdateProduct()">
+                <i class="fas fa-plus"></i> <span>إضافة منتج</span>
+            </button>
+        </div>
+        <hr>
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="ابحث عن المنتج..." />
+            <button id="searchBtn" title="بحث">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>الاسم</th>
+                    <th>السعر</th>
+                    <th>الكمية</th>
+                    <th>إجراءات</th>
+                </tr>
+            </thead>
+            <tbody id="productTableBody">
+                <!-- سيتم إضافة المنتجات هنا -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,792 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+
+body {
+    background-color: #333;
+    display: flex;
+}
+
+/* شكل القائمة الجانبية مغلقة */
+.menu {
+    width: 75px;
+    height: 100vh;
+    background-color: #123;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px 10px;
+    transition: width 0.4s cubic-bezier(0.77, 0, 0.18, 1), box-shadow 0.4s;
+    z-index: 20;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    /* default no shadow */
+}
+
+.menu.open {
+    width: 250px;
+    box-shadow: 4px 0 24px #0481ff88, 0 0 0 #0000;
+    /* add blue shadow */
+    background: linear-gradient(120deg, #123 80%, #0481ff22 100%);
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu ul li {
+    margin: 30px 0;
+}
+
+.menu-btn i {
+    position: absolute;
+    top: 20px;
+    left: 12px;
+    font-size: 24px;
+    background-color: #123;
+    color: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.menu-btn i:hover {
+    background-color: #345;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0 0 0;
+    padding: 10px 0;
+    border-bottom: 2px dashed #ffffff33;
+    transition: opacity 0.3s ease;
+}
+
+.profile h2 {
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    margin: 25px 0 0 0;
+}
+
+.profile h2:hover {
+    color: #0481ff;
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+.log-out {
+    margin: 10px 0 0px 0;
+    background-color: rgba(0, 128, 0, 0.767);
+    border-radius: 10px;
+    padding: 20px;
+    display: block;
+}
+
+.img-box {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #ffffff55;
+    flex-shrink: 0;
+    margin: 25px 0 0 0;
+}
+
+.img-box img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.img-box img:hover {
+    transform: scale(1.3);
+    box-shadow: 0 0 15px #ffffff66;
+    cursor: pointer;
+}
+
+.menu ul li a {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 10px;
+    transition: background 0.3s ease, padding-left 0.3s ease;
+    color: #fff;
+}
+
+.menu ul li p {
+    font-size: 20px;
+}
+
+.menu ul li a i {
+    font-size: 25px;
+    min-width: 25px;
+    text-align: center;
+}
+
+.menu ul li a p {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.menu.open ul li a p {
+    opacity: 1;
+    color: #fff;
+}
+
+.menu.open .profile h2 {
+    opacity: 1;
+    color: #00f7ff;
+}
+
+.menu.open .img-box img {
+    box-shadow: 0 0 12px #00f7ff88;
+    border: 3px solid #00f7ff;
+    transition: box-shadow 0.4s, border 0.4s;
+}
+
+.menu.open .profile {
+    border-bottom: 2px solid #00f7ff88;
+}
+
+.menu.open .menu-btn i {
+    background-color: #0481ff;
+    color: #fff;
+    box-shadow: 0 2px 8px #0481ff55;
+}
+
+.menu.open ul li a:hover {
+    background-color: #00f7ff33;
+    color: #0481ff;
+}
+
+.menu.open ul li a i {
+    color: #00f7ff;
+    transition: color 0.3s;
+}
+
+.menu ul li a i {
+    transition: color 0.3s;
+}
+
+.title-info {
+    background-color: #0481ff;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px #00000033;
+    margin: 20px 0;
+}
+
+.menu.open ~ .overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu.open .menu ul li a p,
+.menu.open .profile h2 {
+    opacity: 1;
+}
+
+.contect {
+    flex: 1;
+    margin-left: 60px;
+    padding: 20px;
+    transition: margin-left 0.4s ease;
+}
+
+.contect p,
+i {
+    font-size: 24px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: center;
+    border-spacing: 8px;
+    box-shadow: 4px 4px 4px #0482ff48;
+}
+
+td,
+th {
+    padding: 12px;
+    background-color: #123;
+    border: 1px solid #ffffff33;
+    border-radius: 10px;
+}
+
+td:hover {
+    background-color: #0481ff33;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+th {
+    background-color: #0481ff;
+    color: #fff;
+    font-weight: 600;
+    margin: 70px;
+}
+
+.price,
+.count {
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.price {
+    background-color: green;
+    color: #fff;
+}
+
+.count {
+    background-color: red;
+    color: #fff;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 5;
+}
+
+
+@media (max-width: 1200px) {
+    .contect {
+        padding: 10px;
+    }
+
+    .search input {
+        width: 250px;
+    }
+
+    input {
+        padding: 10px 30px;
+        margin: 20px 30px 20px 0;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 900px) {
+    .menu {
+        width: 60px;
+    }
+
+    .menu.open {
+        width: 195px;
+    }
+
+    .contect {
+        margin-left: 50px;
+        padding: 8px;
+    }
+
+    .manager {
+        font-size: 20px;
+        padding: 10px 10px;
+    }
+
+    table th,
+    table td {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .search input {
+        width: 150px;
+    }
+
+    .product-inputs {
+        gap: 8px;
+        padding: 10px 2px 6px 2px;
+    }
+
+    .product-inputs input {
+        max-width: 120px;
+        font-size: 0.95rem;
+        padding: 8px 8px;
+    }
+
+    .add-btn {
+        padding: 8px 10px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        flex-direction: column;
+    }
+
+    .menu {
+        position: relative;
+        width: 100vw;
+        height: 55px;
+        padding: 5px 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        z-index: 30;
+    }
+
+    .menu.open {
+        width: 100vw;
+        height: auto;
+        box-shadow: 0 4px 24px #0481ff88;
+    }
+
+    .menu ul {
+        flex-direction: row;
+        display: flex;
+        gap: 10px;
+        margin: 0;
+    }
+
+    .menu ul li {
+        margin: 0 5px;
+    }
+
+    .profile {
+        display: none;
+    }
+
+    .contect {
+        margin-left: 0;
+        padding: 5px;
+    }
+
+    .manager {
+        font-size: 16px;
+        padding: 6px 4px;
+        margin: 10px auto;
+    }
+
+    table th,
+    table td {
+        font-size: 10px;
+        padding: 2px;
+    }
+
+    .search {
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 2px;
+        max-width: 100vw;
+        background: linear-gradient(120deg, #123 80%, #0481ff22 100%);
+        box-shadow: 0 2px 12px #0481ff33;
+    }
+
+    .search input {
+        max-width: 98vw;
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px 12px;
+        border-radius: 10px;
+        margin: 0 auto;
+        box-shadow: 0 1px 6px #00f7ff22;
+    }
+
+    .search button {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+        margin-left: 0;
+        align-self: flex-end;
+        margin-bottom: 2px;
+    }
+
+    .product-inputs {
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 2px 6px 2px;
+    }
+
+    .product-inputs input {
+        max-width: 98vw;
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px 12px;
+        border-radius: 10px;
+        margin: 0 auto;
+    }
+
+    .add-btn {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .login-box button {
+        background: linear-gradient(90deg, #00e676 0%, #00c853 100%);
+        color: #fff;
+        font-size: 19px;
+        padding: 14px 0;
+        border-radius: 12px;
+        letter-spacing: 1px;
+        font-weight: bold;
+        box-shadow: 0 2px 12px #00e67655;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    .login-box button:hover {
+        background: linear-gradient(90deg, #00c853 0%, #00e676 100%);
+        color: #fff;
+    }
+}
+
+/* إضافة تأثير الحدود المتحركة عند التركيز */
+input:focus {
+    border-color: #00f7ff;
+    box-shadow: 0 0 8px #00f7ff88;
+}
+
+/* تأثير placeholder */
+input::placeholder {
+    text-align: center;
+    color: #ffffff88;
+    font-size: 20px;
+    font-style: italic;
+}
+
+/* لإضافة تأثير الإطار المتحرك باستخدام box-shadow */
+@keyframes borderMove {
+    0% {
+        box-shadow: 0 0 8px #00f7ff88;
+        border-color: #00f7ff;
+    }
+
+    50% {
+        box-shadow: 0 0 12px #ff00ea88;
+        border-color: #ff00ea;
+    }
+
+    100% {
+        box-shadow: 0 0 8px #00f7ff88;
+        border-color: #00f7ff;
+    }
+}
+
+/* خيار لتشغيل الانيميشن على الفور أو عند التركيز */
+input:focus {
+    animation: borderMove 6s linear infinite;
+}
+
+button {
+    padding: 10px 12px;
+    margin: 2px;
+    cursor: pointer;
+    background-color: #0481ff;
+    box-shadow: #0368d4 0px 2px 4px;
+    transition: 1s ease;
+}
+
+button:hover {
+    background-color: #0368d4;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px #00000055;
+    transition: 1s ease;
+}
+
+.actions button {
+    margin: 0 5px;
+}
+
+.manager {
+    font-size: 28px;
+    font-weight: bold;
+    color: #0481ff;
+    background-color: #123;
+    padding: 15px 30px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 30px auto;
+    width: fit-content;
+    box-shadow: 0 4px 8px #00000055;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.manager {
+    animation: fadeInUp 0.7s ease forwards;
+}
+
+
+.manager:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px #0481ff88;
+    cursor: pointer;
+}
+
+.input-wrapper {
+    position: relative;
+    display: inline-block;
+    border-radius: 14px;
+    padding: 2px;
+    /* سماكة الإطار */
+    background: linear-gradient(120deg, #00f7ff, #ff00ea, #00ff6a, #ffae00);
+    background-size: 300% 300%;
+    animation: borderMove 6s linear infinite;
+}
+
+.input-wrapper input {
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    background-color: #123;
+    color: white;
+    font-size: 18px;
+    width: 300px;
+    /* أو حسب الحاجة */
+}
+
+.search {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    background: #123;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #0481ff33;
+    padding: 8px 12px;
+    margin: 10px auto 20px auto;
+    max-width: 95vw;
+}
+
+.search input {
+    width: 100%;
+    min-width: 80px;
+    max-width: 400px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1.5px solid #0481ff44;
+    background: #222b;
+    color: #fff;
+    font-size: 1rem;
+    transition: width 0.3s, box-shadow 0.3s, border 0.3s;
+    box-shadow: 0 1px 4px #0481ff22;
+}
+
+.search input:focus {
+    border: 1.5px solid #00f7ff;
+    box-shadow: 0 0 8px #00f7ff88;
+    background: #222e;
+}
+
+.search button {
+    background: linear-gradient(120deg, #00f7ff, #0481ff);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px #00f7ff44;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-left: 6px;
+}
+
+.search button:hover {
+    background: linear-gradient(120deg, #0481ff, #00f7ff);
+    box-shadow: 0 4px 16px #00f7ff88;
+    transform: scale(1.08);
+}
+
+.search i {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+}
+
+.product-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+    justify-content: center;
+    margin: 18px 0 10px 0;
+    background: #123;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px #0481ff22;
+    padding: 18px 10px 10px 10px;
+}
+
+.product-inputs input {
+    flex: 1 1 120px;
+    min-width: 90px;
+    max-width: 200px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: 1.5px solid #0481ff44;
+    background: #222b;
+    color: #fff;
+    font-size: 1rem;
+    margin: 0 4px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.product-inputs input:focus {
+    border: 1.5px solid #00f7ff;
+    box-shadow: 0 0 8px #00f7ff88;
+    background: #222e;
+}
+
+.add-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(120deg, #00f7ff, #0481ff);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 18px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #00f7ff44;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    margin-left: 8px;
+}
+
+.add-btn:hover {
+    background: linear-gradient(120deg, #0481ff, #00f7ff);
+    box-shadow: 0 4px 16px #00f7ff88;
+    transform: scale(1.05);
+}
+
+.add-btn i {
+    font-size: 1.1em;
+}
+
+@media (max-width: 900px) {
+    .search input {
+        max-width: 180px;
+        font-size: 0.95rem;
+    }
+
+    .search {
+        padding: 6px 4px;
+    }
+
+    .search button {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .search {
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 2px;
+        max-width: 100vw;
+        background: linear-gradient(120deg, #123 80%, #0481ff22 100%);
+        box-shadow: 0 2px 12px #0481ff33;
+    }
+
+    .search input {
+        max-width: 98vw;
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px 12px;
+        border-radius: 10px;
+        margin: 0 auto;
+        box-shadow: 0 1px 6px #00f7ff22;
+    }
+
+    .search button {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+        margin-left: 0;
+        align-self: flex-end;
+        margin-bottom: 2px;
+    }
+
+    .product-inputs {
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 2px 6px 2px;
+    }
+
+    .product-inputs input {
+        max-width: 98vw;
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px 12px;
+        border-radius: 10px;
+        margin: 0 auto;
+    }
+
+    .add-btn {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .login-box button {
+        background: linear-gradient(90deg, #00e676 0%, #00c853 100%);
+        color: #fff;
+        font-size: 18px;
+        padding: 14px 0;
+        border-radius: 12px;
+        letter-spacing: 1px;
+        font-weight: bold;
+        box-shadow: 0 2px 12px #00e67655;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    .login-box button:hover {
+        background: linear-gradient(90deg, #00c853 0%, #00e676 100%);
+        color: #fff;
+    }
+}
